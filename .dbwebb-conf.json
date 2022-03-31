@@ -1,4 +1,4 @@
 {
-    "expo": "exp://exp.host/@emcofah/lager?release-channel=default",
+    "expo": "https://expo.dev/@emcofah/lager",
     "github": "https://github.com/emcofa/lager.git"
 }
