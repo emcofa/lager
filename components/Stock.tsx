@@ -7,22 +7,12 @@ import styles from "../styles/Base.js";
 
 
 
-function StockList() {
-    const [products, setProducts] = useState([]);
+function StockList({products, setProducts}) {
 
-    useEffect(() => {
-        fetch(`${config.base_url}/products?api_key=${config.api_key}`)
-            .then(response => response.json())
-            .then(result => setProducts(result.data));
-    }, []);
+    useEffect(async () => {
+        setProducts(await productModel.getProducts());
+      }, []);
 
-    // useEffect(async () => {
-    //     setProducts(await productModel.getProducts());
-    // }, []);
-
-    // const list = products.map((product, index) => <Text key={index} style={styles.items}>{product.name} - Antal: {product.stock}</Text>);
-
-    console.log("hej", products)
 
     const list = products.map((product, index) => {
         return <Text
@@ -39,7 +29,7 @@ function StockList() {
     );
 }
 
-export default function Stock(products, setProducts) {
+export default function Stock({products, setProducts}) {
     return (
         <View>
             <Text style={styles.info}>Lagerförteckning</Text>

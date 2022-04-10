@@ -1,8 +1,8 @@
 import { SafeAreaView, Text, TouchableOpacity } from "react-native";
 import orderModel from "../models/orders";
+import productModel from "../models/products";
 import { useState, useEffect } from 'react';
 import styles from "../styles/Base.js";
-import productModel from '../models/products'
 
 export default function PickList({ route, navigation, setProducts }) {
     const { order } = route.params;

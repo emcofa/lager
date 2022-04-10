@@ -8,7 +8,7 @@ import styles from "../styles/Base.js";
 
 // API-key: b14d3d731d24a4979327e2179104bfba
 
-export default function Home(products, setProducts) {
+export default function Home({products, setProducts}) {
   console.log(2, products)
   return (
     <SafeAreaView style={styles.container}>

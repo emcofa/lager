@@ -5,7 +5,7 @@ import styles from "../styles/Base.js";
 import orderModel from '../models/orders'
 
 export default function OrderList({ route, navigation }) {
-    const { reload } = route.params || false;
+    const { reload } = route.params || true;
     const [allOrders, setAllOrders] = useState([]);
 
     if (reload) {
@@ -18,16 +18,13 @@ export default function OrderList({ route, navigation }) {
 
     useEffect(() => {
         reloadOrders();
-        fetch(`${config.base_url}/orders?api_key=${config.api_key}`)
-            .then(response => response.json())
-            .then(result => setAllOrders(result.data));
     }, []);
 
     const listOfOrders = allOrders
         .filter(order => order.status === "Ny")
         .map((order, index) => {
             return <TouchableOpacity key={index} onPress={() => {
-                navigation.navigate('Details', {
+                navigation.navigate('Orderdetaljer', {
                     order: order
                 });
             }} style={styles.appButtonContainer}>
