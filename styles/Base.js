@@ -1,0 +1,107 @@
+import { StyleSheet } from 'react-native';
+
+export default StyleSheet.create({
+    container: {
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#43a1c9',
+    },
+    buttonText: {
+        alignItems: 'center',
+        fontSize: 20,
+        textAlign: 'center'
+    },
+    headline: {
+        alignSelf: 'center',
+        color: '#191919',
+        fontSize: 52,
+        fontWeight: "bold",
+        letterSpacing: 1.2,
+        position: 'absolute',
+        marginTop: 30,
+        fontFamily: "Cochin",
+    },
+    header2: {
+        width: 360,
+        lineHeight: 74,
+        letterSpacing: 1,
+        alignSelf: 'center',
+        textAlign: 'center',
+        marginTop: 20,
+        color: '#191919',
+        fontSize: 24,
+        fontFamily: 'Helvetica',
+    },
+    container: {
+        flex: 1,
+    },
+    items: {
+        alignSelf: 'center',
+        width: 360,
+        fontSize: 18,
+        marginTop: 10,
+        marginBottom: 10,
+        lineHeight: 20,
+        letterSpacing: 1,
+        textAlign: 'center',
+        fontFamily: 'Helvetica',
+        fontWeight: 'normal',
+    },
+    info: {
+        alignSelf: 'center',
+        width: 360,
+        lineHeight: 74,
+        letterSpacing: 1.2,
+        textAlign: 'center',
+        marginTop: 10,
+        color: '#59724A',
+        fontSize: 32,
+        fontFamily: 'Helvetica',
+        fontWeight: 'bold',
+    },
+    base: {
+        alignSelf: 'center',
+        flex: 1,
+        backgroundColor: '#fff',
+        padding: 12,
+    },
+    img: {
+        alignSelf: 'center',
+        width: 360,
+        height: 240,
+        borderRadius: 20,
+    },
+    appButtonContainer: {
+        elevation: 8,
+        backgroundColor: "#ffa500",
+        borderRadius: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 12,
+        marginTop: 20,
+        alignSelf: "center",
+        // shadowColor: "#000",
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 5,
+        // },
+        // shadowOpacity: 0.36,
+        // shadowRadius: 6.68,
+    },
+    appButtonText: {
+        fontFamily: 'Helvetica',
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: "bold",
+        alignSelf: "center",
+        textTransform: "uppercase"
+    },
+    color: {
+        color: 'red',
+        alignSelf: 'center',
+        fontFamily: 'Helvetica',
+        fontSize: 18,
+        letterSpacing: 1.2,
+        marginTop: 10,
+    }
+});

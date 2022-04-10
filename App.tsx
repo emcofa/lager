@@ -1,47 +1,50 @@
+import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
-import { Image, StyleSheet, Text, ScrollView, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import warehouse from './assets/warehouse.jpg';
-import Stock from './components/Stock';
+import Home from "./components/Home";
+import Pick from "./components/Pick";
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useState, useEffect } from 'react';
+import styles from "./styles/Base.js";
 
+const routeIcons = {
+  "Lager": "home",
+  "Plock": "list",
+};
 
-// API-key: b14d3d731d24a4979327e2179104bfba
+const Tab = createBottomTabNavigator();
 
 export default function App() {
+
+  const [products, setProducts] = useState([]);
+  console.log(1, products)
+
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.base}>
-        <Image source={warehouse} style={styles.img} />
-        <Text style={styles.headline}>Sticklingar</Text>
-        <Stock />
-        <StatusBar style="auto" />
-      </ScrollView>
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName = routeIcons[route.name] || "alert";
+
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: '#59724A',
+          tabBarInactiveTintColor: 'gray',
+          headerShown: false
+        })}
+        >
+          <Tab.Screen name="Lager">
+            {() => <Home products={products} setProducts={setProducts} />}
+          </Tab.Screen>
+          <Tab.Screen name="Plock">
+            {() => <Pick setProducts={setProducts}
+            />}
+          </Tab.Screen>
+        </Tab.Navigator>
+      </NavigationContainer>
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  base: {
-    flex: 1,
-    backgroundColor: '#fff',
-    padding: 12,
-  },
-  headline: {
-    color: '#000',
-    fontSize: 52,
-    fontWeight: "bold",
-    letterSpacing: 1.2,
-    position: 'absolute',
-    marginHorizontal: 50,
-    marginTop: 30,
-    fontFamily: "Cochin",
-  },
-  img: {
-    width: 360,
-    height: 240,
-    borderRadius: 20,
-  }
-});

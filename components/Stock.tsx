@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { Text, StyleSheet, View, } from 'react-native';
 import config from "../config/config.json";
 
+import productModel from '../models/products'
+import styles from "../styles/Base.js";
+
 
 
 function StockList() {
@@ -13,8 +16,21 @@ function StockList() {
             .then(result => setProducts(result.data));
     }, []);
 
+    // useEffect(async () => {
+    //     setProducts(await productModel.getProducts());
+    // }, []);
 
-    const list = products.map((product, index) => <Text key={index} style={styles.items}>{product.name} - Antal: {product.stock}</Text>);
+    // const list = products.map((product, index) => <Text key={index} style={styles.items}>{product.name} - Antal: {product.stock}</Text>);
+
+    console.log("hej", products)
+
+    const list = products.map((product, index) => {
+        return <Text
+            key={index} style={styles.items}
+        >
+            {product.name} - Antal: {product.stock}
+        </Text>
+    });
 
     return (
         <View>
@@ -23,38 +39,13 @@ function StockList() {
     );
 }
 
-export default function Stock() {
+export default function Stock(products, setProducts) {
     return (
         <View>
             <Text style={styles.info}>Lagerförteckning</Text>
-            <StockList />
+            <StockList products={products} setProducts={setProducts} />
         </View>
     );
 }
 
-
-const styles = StyleSheet.create({
-    items: {
-        width: 360,
-        fontSize: 18,
-        marginBottom: 20,
-        lineHeight: 20,
-        letterSpacing: 1.2,
-        textAlign: 'center',
-        fontFamily: 'Helvetica',
-        fontWeight: 'normal',
-    },
-    info: {
-        width: 360,
-        lineHeight: 74,
-        letterSpacing: 1.2,
-        textAlign: 'center',
-        marginTop: 20,
-        marginBottom: 20,
-        color: '#59724A',
-        fontSize: 32,
-        fontFamily: 'Helvetica',
-        fontWeight: 'bold',
-    },
-});
 
