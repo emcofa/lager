@@ -71,15 +71,15 @@ export default function DeliveryForm({ navigation, setProducts }) {
     const [dropDownDate, setDropDownDate] = useState<Date>(new Date());
 
     async function addDelivery() {
-        console.log(delivery)
         await deliveryModel.addDelivery(delivery);
 
         const updatedProduct = {
             ...currentProduct,
             stock: (currentProduct.stock || 0) + (delivery.amount || 0)
         };
-
+        console.log(updatedProduct);
         await productModel.updateProduct(updatedProduct);
+        setProducts(await productModel.getProducts());
         navigation.navigate("List", { reload: true });
     }
 

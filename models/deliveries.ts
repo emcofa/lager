@@ -19,8 +19,6 @@ const deliveries = {
             api_key: config.api_key,
             comment: delivery.comment,
         };
-        console.log("inuti addDelvery");
-        console.log(changedOrder);
         await deliveries.updateDelivery(changedOrder);
 
     },
