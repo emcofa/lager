@@ -5,7 +5,6 @@ export default StyleSheet.create({
         padding: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#43a1c9',
     },
     buttonText: {
         alignItems: 'center',
@@ -66,6 +65,12 @@ export default StyleSheet.create({
         backgroundColor: '#fff',
         padding: 12,
     },
+    base2: {
+        alignSelf: 'center',
+        flex: 1,
+        backgroundColor: '#EBEBEB',
+        padding: 12,
+    },
     img: {
         alignSelf: 'center',
         width: 360,
@@ -104,5 +109,24 @@ export default StyleSheet.create({
         fontSize: 18,
         letterSpacing: 1.2,
         marginTop: 10,
-    }
+    },
+    input: {
+        fontSize: 20,
+        marginBottom: 28,
+        borderWidth: 1,
+        padding: 10,
+        borderColor: "#ccc",
+        borderRadius: 3,
+    },
+
+    deliveryContainer: {
+        alignSelf: 'center',
+        width: 360,
+        borderWidth: 1,
+        backgroundColor: '#fff',
+        margin: 10,
+        justifyContent: "space-between",
+        borderRadius: 20,
+        padding: 10,
+    },
 });

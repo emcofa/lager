@@ -18,7 +18,7 @@ function StockList({products, setProducts}) {
         return <Text
             key={index} style={styles.items}
         >
-            {product.name} - Antal: {product.stock}
+            {product.name} - Antal: {product.stock}st
         </Text>
     });
 

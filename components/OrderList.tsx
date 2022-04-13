@@ -8,6 +8,9 @@ export default function OrderList({ route, navigation }) {
     const { reload } = route.params || true;
     const [allOrders, setAllOrders] = useState([]);
 
+    console.log("testar all Orders");
+    console.log(allOrders);
+
     if (reload) {
         reloadOrders();
     }
@@ -36,7 +39,7 @@ export default function OrderList({ route, navigation }) {
         });
 
     return (
-        <View>
+        <View style={styles.base2}>
             <Text style={styles.header2}>Ordrar redo att plockas:</Text>
             {listOfOrders}
         </View>

@@ -1,9 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Home from "./components/Home";
 import Pick from "./components/Pick";
+import Deliveries from "./components/Deliveries";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useState, useEffect } from 'react';
@@ -12,6 +12,7 @@ import styles from "./styles/Base.js";
 const routeIcons = {
   "Lager": "home",
   "Plock": "list",
+  "Inleverans": "car-outline"
 };
 
 const Tab = createBottomTabNavigator();
@@ -19,7 +20,6 @@ const Tab = createBottomTabNavigator();
 export default function App() {
 
   const [products, setProducts] = useState([]);
-  console.log(1, products)
 
   return (
     <SafeAreaView style={styles.container}>
@@ -40,6 +40,10 @@ export default function App() {
           </Tab.Screen>
           <Tab.Screen name="Plock">
             {() => <Pick setProducts={setProducts}
+            />}
+          </Tab.Screen>
+          <Tab.Screen name="Inleverans">
+            {() => <Deliveries setProducts={setProducts}
             />}
           </Tab.Screen>
         </Tab.Navigator>
