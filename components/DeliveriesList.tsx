@@ -24,17 +24,20 @@ export default function DeliveriesList({ route, navigation }) {
     const listOfDeliveries = allDeliveries
         .map((delivery, index) => {
             return <View key={index} style={styles.deliveryContainer}>
-            <Text style={styles.items}>Produktnamn: {delivery.product_name}</Text>
-            <Text style={styles.items}>Antal: {delivery.amount}st</Text>
-            <Text style={styles.items}>Leveransdatum: {delivery.delivery_date}</Text>
-            <Text style={styles.items}>Kommentar: {delivery.comment}</Text>
+                <Text style={styles.items}>Produktnamn: {delivery.product_name}</Text>
+                <Text style={styles.items}>Antal: {delivery.amount}st</Text>
+                <Text style={styles.items}>Leveransdatum: {delivery.delivery_date}</Text>
+                <Text style={styles.items}>Kommentar: {delivery.comment}</Text>
             </View>
         });
 
     return (
         <ScrollView style={styles.base2}>
             <Text style={styles.info}>Inleveranser</Text>
-            {listOfDeliveries}
+            {listOfDeliveries
+                ? listOfDeliveries
+                : <Text style={styles.color}>Inleveranser saknas</Text>
+            }
             <TouchableOpacity
                 onPress={() => {
                     navigation.navigate('Form');
