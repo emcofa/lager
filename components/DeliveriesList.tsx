@@ -24,10 +24,10 @@ export default function DeliveriesList({ route, navigation }) {
     const listOfDeliveries = allDeliveries
         .map((delivery, index) => {
             return <View key={index} style={styles.deliveryContainer}>
-                <Text style={styles.items}>Produktnamn: {delivery.product_name}</Text>
-                <Text style={styles.items}>Antal: {delivery.amount}st</Text>
-                <Text style={styles.items}>Leveransdatum: {delivery.delivery_date}</Text>
-                <Text style={styles.items}>Kommentar: {delivery.comment}</Text>
+                <Text style={styles.header3}>{delivery.product_name}</Text>
+                <Text style={styles.left}>Antal: {delivery.amount}st</Text>
+                <Text style={styles.left}>Leveransdatum: {delivery.delivery_date}</Text>
+                <Text style={styles.left}>Kommentar: {delivery.comment}</Text>
             </View>
         });
 

@@ -17,12 +17,12 @@ function DateDropDown(props) {
     };
 
     return (
-        <View>
+        <View style={styles.dropdown}>
             {Platform.OS === "android" && (
                 <Button onPress={showDatePicker} title="Visa datumväljare" />
             )}
             {(show || Platform.OS === "ios") && (
-                <DateTimePicker 
+                <DateTimePicker
                     onChange={(event, date) => {
                         setDropDownDate(date);
 
@@ -86,16 +86,13 @@ export default function DeliveryForm({ navigation, setProducts }) {
     return (
         <ScrollView style={styles.base}>
             <Text style={styles.info}>Ny inleverans</Text>
-
-            <Text style={styles.header2}>Kommentar</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={(content: string) => {
-                    setDelivery({ ...delivery, comment: content })
-                }}
-                value={delivery?.comment}
+            <Text style={styles.form}>Produkt</Text>
+            <ProductDropDown
+                delivery={delivery}
+                setDelivery={setDelivery}
+                setCurrentProduct={setCurrentProduct}
             />
-            <Text style={styles.header2}>Antal</Text>
+            <Text style={styles.form}>Antal</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={(content: string) => {
@@ -104,17 +101,19 @@ export default function DeliveryForm({ navigation, setProducts }) {
                 value={delivery?.amount?.toString()}
                 keyboardType="numeric"
             />
-            <Text style={styles.header2}>Produkt</Text>
-            <ProductDropDown
-                delivery={delivery}
-                setDelivery={setDelivery}
-                setCurrentProduct={setCurrentProduct}
-            />
-            <Text style={styles.header2}>Leveransdatum</Text>
+            <Text style={styles.form}>Leveransdatum</Text>
             <DateDropDown
                 delivery={delivery}
                 setDelivery={setDelivery}
-            setDropDownDate={setDropDownDate}
+                setDropDownDate={setDropDownDate}
+            />
+            <Text style={styles.form}>Kommentar</Text>
+            <TextInput
+                style={styles.input}
+                onChangeText={(content: string) => {
+                    setDelivery({ ...delivery, comment: content })
+                }}
+                value={delivery?.comment}
             />
 
             <TouchableOpacity

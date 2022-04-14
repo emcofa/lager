@@ -27,11 +27,22 @@ export default StyleSheet.create({
         letterSpacing: 1,
         alignSelf: 'center',
         textAlign: 'center',
-        marginTop: 20,
         color: '#191919',
         fontSize: 24,
         fontFamily: 'Helvetica',
     },
+    header3: {
+        width: '100%',
+        lineHeight: 30,
+        letterSpacing: 1,
+        textAlign: 'center',
+        color: '#191919',
+        fontSize: 20,
+        fontWeight: 'bold',
+        fontFamily: 'Helvetica',
+        marginBottom: 20,
+    },
+
     container: {
         flex: 1,
     },
@@ -44,6 +55,17 @@ export default StyleSheet.create({
         lineHeight: 20,
         letterSpacing: 1,
         textAlign: 'center',
+        fontFamily: 'Helvetica',
+        fontWeight: 'normal',
+    },
+
+    left: {
+        padding: 1,
+        fontSize: 18,
+        marginTop: 10,
+        lineHeight: 20,
+        letterSpacing: 1,
+        textAlign: 'left',
         fontFamily: 'Helvetica',
         fontWeight: 'normal',
     },
@@ -118,7 +140,14 @@ export default StyleSheet.create({
         borderColor: "#ccc",
         borderRadius: 3,
     },
-
+    form: {
+        lineHeight: 74,
+        letterSpacing: 1,
+        textAlign: 'left',
+        color: '#191919',
+        fontSize: 20,
+        fontFamily: 'Helvetica',
+    },
     deliveryContainer: {
         alignSelf: 'center',
         width: 360,
