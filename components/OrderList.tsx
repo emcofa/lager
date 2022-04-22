@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, TouchableOpacity, Text, Button } from "react-native";
+import { ScrollView, TouchableOpacity, Text, Button } from "react-native";
 import config from "./../config/config.json";
 import styles from "../styles/Base.js";
 import orderModel from '../models/orders'
@@ -27,7 +27,7 @@ export default function OrderList({ route, navigation }) {
                 navigation.navigate('Orderdetaljer', {
                     order: order
                 });
-            }} style={styles.appButtonContainer}>
+            }} style={styles.appButtonContainer2}>
                 <Text key={index} style={styles.appButtonText}>
                     {order.name}
                 </Text>
@@ -35,10 +35,10 @@ export default function OrderList({ route, navigation }) {
         });
 
     return (
-        <View style={styles.base2}>
+        <ScrollView style={styles.base2}>
             <Text style={styles.info}>Ordrar</Text>
             <Text style={styles.items}>Följande ordrar kan plockas:</Text>
             {listOfOrders}
-        </View>
+        </ScrollView>
     );
 }

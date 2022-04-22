@@ -82,13 +82,11 @@ export default StyleSheet.create({
         fontWeight: 'bold',
     },
     base: {
-        alignSelf: 'center',
         flex: 1,
         backgroundColor: '#fff',
         padding: 12,
     },
     base2: {
-        alignSelf: 'center',
         flex: 1,
         backgroundColor: '#EBEBEB',
         padding: 12,
@@ -105,7 +103,7 @@ export default StyleSheet.create({
         borderRadius: 10,
         paddingVertical: 5,
         paddingHorizontal: 12,
-        marginTop: 30,
+        margin: 20,
         width: "75%",
         alignSelf: "center",
         shadowColor: "#000",
@@ -158,7 +156,7 @@ export default StyleSheet.create({
         textTransform: "uppercase"
     },
     color: {
-        color: 'red',
+        color: '#E5475E',
         alignSelf: 'center',
         fontFamily: 'Helvetica',
         fontSize: 18,
@@ -184,11 +182,9 @@ export default StyleSheet.create({
     deliveryContainer: {
         alignSelf: 'center',
         width: 360,
-        borderWidth: 1,
         backgroundColor: '#fff',
         margin: 10,
-        justifyContent: "space-between",
-        borderRadius: 20,
+        // borderRadius: 20,
         padding: 10,
     },
 });

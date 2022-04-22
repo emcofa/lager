@@ -1,11 +1,11 @@
-import { View, Text, TextInput, Button } from "react-native";
+import { ScrollView, Text, TextInput, Button } from "react-native";
 import styles from '../../styles/Base.js';
 
 export default function AuthFields({ auth, setAuth, title, submit, navigation }) {
     return (
-        <View style={styles.base}>
-            <Text style={styles.header2}>{title}</Text>
-            <Text style={styles.label}>E-post</Text>
+        <ScrollView style={styles.base}>
+            <Text style={styles.info}>{title}</Text>
+            <Text style={styles.form}>E-post:</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={(content: string) => {
@@ -16,7 +16,7 @@ export default function AuthFields({ auth, setAuth, title, submit, navigation })
                 autoCapitalize="none"
                 autoCorrect={false}
             />
-            <Text style={styles.label}>Lösenord</Text>
+            <Text style={styles.form}>Lösenord:</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={(content: string) => {
@@ -41,6 +41,6 @@ export default function AuthFields({ auth, setAuth, title, submit, navigation })
                     }}
                 />
             }
-        </View>
+        </ScrollView>
     );
 };
