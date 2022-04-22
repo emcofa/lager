@@ -32,7 +32,6 @@ const deliveries = {
                 method: 'POST'
             })
             .then(response => response.json()) 
-            // .then(json => console.log(json));
         } catch (error) {
             console.log("Could not add delivery ")
         }
