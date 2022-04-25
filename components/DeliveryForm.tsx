@@ -77,7 +77,6 @@ export default function DeliveryForm({ navigation, setProducts }) {
             ...currentProduct,
             stock: (currentProduct.stock || 0) + (delivery.amount || 0)
         };
-        console.log(updatedProduct);
         await productModel.updateProduct(updatedProduct);
         setProducts(await productModel.getProducts());
         navigation.navigate("List", { reload: true });

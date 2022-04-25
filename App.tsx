@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Home from "./components/Home";
+import Ship from "./components/ship/Ship";
 import Pick from "./components/Pick";
 import Auth from "./components/auth/Auth";
 import AuthModel from './models/auth';
@@ -16,8 +17,9 @@ const routeIcons = {
   "Lager": "home-outline",
   "Plock": "list-outline",
   "Inleverans": "car-outline",
-  "Logga in":  "log-in-outline",
+  "Logga in": "log-in-outline",
   "Faktura": "newspaper-outline",
+  "Skicka order": "map-outline",
 };
 
 const Tab = createBottomTabNavigator();
@@ -56,10 +58,14 @@ export default function App() {
             {() => <Deliveries setProducts={setProducts}
             />}
           </Tab.Screen>
+          <Tab.Screen name="Skicka order">
+            {() => <Ship setProducts={setProducts}
+            />}
+          </Tab.Screen>
           {isLoggedIn ?
             <Tab.Screen name="Faktura">
               {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}
-              </Tab.Screen> :
+            </Tab.Screen> :
             <Tab.Screen name="Logga in">
               {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
             </Tab.Screen>

@@ -184,7 +184,6 @@ export default StyleSheet.create({
         width: 360,
         backgroundColor: '#fff',
         margin: 10,
-        // borderRadius: 20,
         padding: 10,
     },
 });
