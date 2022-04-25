@@ -46,7 +46,12 @@ export default function ShipOrder({ route }) {
 
     return (
         <View style={styles.base}>
-            <Text style={styles.header2}>Skicka order</Text>
+            <Text style={styles.info}>Skicka order</Text>
+            <Text style={styles.left}>{order.name}</Text>
+            <Text style={styles.left}>{order.address}</Text>
+            <Text style={styles.left}>{order.zip}</Text>
+            <Text style={styles.left}>{order.city}</Text>
+            <Text style={styles.left}>{order.country}</Text>
             <View style={styles.container}>
                 <MapView
                     style={styles2.map}
