@@ -1,6 +1,7 @@
 import config from "../config/config.json";
 
 import Delivery from "../interfaces/delivery"
+import { showMessage } from "react-native-flash-message";
 
 
 const deliveries = {
@@ -19,23 +20,44 @@ const deliveries = {
             api_key: config.api_key,
             comment: delivery.comment,
         };
-        await deliveries.updateDelivery(changedOrder);
+        const result = await deliveries.updateDelivery(changedOrder);
+
+        if (result.type === "success") {
+            showMessage({
+                message: result.title,
+                description: result.message,
+                type: result.type,
+            });
+        } else {
+            showMessage({
+                message: "Det gick inte att lägga till leverans",
+                description: "Du glömde fylla i ett eller flera fält",
+                type: "warning",
+            });
+        }
 
     },
     updateDelivery: async function updateDelivery(delivery: Partial<Delivery>) {
-        try {
-            await fetch(`${config.base_url}/deliveries`, {
-                body: JSON.stringify(delivery),
-                headers: {
-                    'content-type': 'application/json'
-                },
-                method: 'POST'
-            })
-            .then(response => response.json()) 
-        } catch (error) {
-            console.log("Could not add delivery ")
+        const response = await fetch(`${config.base_url}/deliveries`, {
+            body: JSON.stringify(delivery),
+            headers: {
+                'content-type': 'application/json'
+            },
+            method: 'POST'
+        })
+        const result = await response.json();
+        if (Object.prototype.hasOwnProperty.call(result, 'errors')) {
+            return {
+                title: result.errors.title,
+                message: result.errors.detail,
+                type: "danger",
+            };
         }
-        
+        return {
+            title: "Inleverans lyckades",
+            message: "De tillagda produkterna har uppdaterats i produktlistan",
+            type: "success",
+        };
     }
 };
 
