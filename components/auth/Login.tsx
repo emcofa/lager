@@ -8,9 +8,18 @@ export default function Login({ navigation, setIsLoggedIn }) {
     const [auth, setAuth] = useState<Partial<Auth>>({});
 
     async function doLogin() {
-        if (auth.email && auth.password === true) {
+        if (auth.email && auth.password) {
             const result = await AuthModel.login(auth.email, auth.password);
-            setIsLoggedIn(true);
+
+            if (result.type === "success") {
+                setIsLoggedIn(true);
+            }
+
+            showMessage({
+                message: result.title,
+                description: result.message,
+                type: result.type,
+            });
         } else {
             showMessage({
                 message: "Saknas",
