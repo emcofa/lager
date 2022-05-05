@@ -9,6 +9,16 @@ import Delivery from '../interfaces/delivery';
 import deliveryModel from "../models/deliveries";
 import { showMessage } from "react-native-flash-message";
 
+function validateAmount(text: string) {
+    if (parseInt(text) <= 0) {
+        showMessage({
+            message: "Antalet uppfyller inte kraven.",
+            description: "Du måste fylla i ett antal större än 0",
+            type: "warning"
+        });
+    }
+}
+
 function DateDropDown(props) {
     const [dropDownDate, setDropDownDate] = useState<Date>(new Date());
     const [show, setShow] = useState<Boolean>(false);
@@ -86,7 +96,7 @@ export default function DeliveryForm({ navigation, setProducts }) {
     return (
         <ScrollView style={styles.base}>
             <Text style={styles.info}>Ny inleverans</Text>
-            <Text style={styles.form}>Produkt:</Text>
+            <Text style={styles.form}>Produkt: </Text>
             <ProductDropDown
                 delivery={delivery}
                 setDelivery={setDelivery}
@@ -96,10 +106,12 @@ export default function DeliveryForm({ navigation, setProducts }) {
             <TextInput
                 style={styles.input}
                 onChangeText={(content: string) => {
+                    validateAmount(content)
                     setDelivery({ ...delivery, amount: parseInt(content) })
                 }}
                 value={delivery?.amount?.toString()}
                 keyboardType="numeric"
+                testID = "amount-field"
             />
             <Text style={styles.form}>Leveransdatum:</Text>
             <DateDropDown
@@ -119,7 +131,8 @@ export default function DeliveryForm({ navigation, setProducts }) {
             <TouchableOpacity
                 onPress={() => {
                     addDelivery();
-                }} style={styles.appButtonContainer}>
+                }} accessibilityLabel={`Skapa inleverans genom att trycka`}
+                style={styles.appButtonContainer}>
                 <Text style={styles.appButtonText}>
                     Gör inleverans
                 </Text>

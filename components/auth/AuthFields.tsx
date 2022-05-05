@@ -31,7 +31,7 @@ export default function AuthFields({ auth, setAuth, title, submit, navigation })
     return (
         <ScrollView style={styles.base}>
             <Text style={styles.info}>{title}</Text>
-            <Text style={styles.form}>E-post:</Text>
+            <Text style={styles.form}>E-post</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={(content: string) => {
@@ -42,6 +42,7 @@ export default function AuthFields({ auth, setAuth, title, submit, navigation })
                 keyboardType="email-address"
                 autoCapitalize="none"
                 autoCorrect={false}
+                testID = "email-field"
             />
             <Text style={styles.form}>Lösenord:</Text>
             <TextInput
@@ -54,12 +55,14 @@ export default function AuthFields({ auth, setAuth, title, submit, navigation })
                 secureTextEntry={true}
                 autoCapitalize="none"
                 autoCorrect={false}
+                testID = "password-field"
             />
             <Button
                 title={title}
                 onPress={() => {
                     submit();
                 }}
+                accessibilityLabel={`${title} genom att trycka`}
             />
             {title === "Logga in" &&
                 <Button

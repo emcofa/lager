@@ -27,7 +27,9 @@ export default function ShipList({ route, navigation }) {
             navigation.navigate('Skicka', {
                 order: order
             });
-        }} style={styles.appButtonContainer2}>
+        }}
+        accessibilityLabel={`skicka order`}
+        style={styles.appButtonContainer2}>
             <Text key={index} style={styles.appButtonText}>
                 {order.name}
             </Text>

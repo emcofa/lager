@@ -11,7 +11,7 @@ import styles from "../styles/Base.js";
 export default function Home({products, setProducts}) {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.base}>
+      <ScrollView style={styles.base} testID='base'>
         <Image source={warehouse} style={styles.img} />
         <Text style={styles.headline}>Sticklingar</Text>
         <Stock products={products} setProducts={setProducts} />
